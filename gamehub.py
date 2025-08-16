@@ -6,8 +6,6 @@ from games.flappy import run as run_flappy
 from games.checkers import run as run_checkers
 
 WIDTH, HEIGHT = 640, 480
-
-# Retro 70's palette
 MENU_BG = (58, 45, 47)
 STRIPE_COLORS = [(249, 200, 14), (255, 127, 17), (214, 48, 49)]
 TITLE_COLOR = (249, 200, 14)
@@ -31,10 +29,12 @@ def main():
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
     pygame.display.set_caption("Game Hub")
     clock = pygame.time.Clock()
+
     title_font = pygame.font.SysFont(None, 72)
     font = pygame.font.SysFont(None, 48)
 
     games = [("Snake", run_snake), ("Flappy Bird", run_flappy), ("Checkers", run_checkers)]
+
     selected = 0
 
     joysticks = init_joysticks()
