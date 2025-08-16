@@ -5,8 +5,6 @@ from games.snake import run as run_snake
 from games.flappy import run as run_flappy
 
 WIDTH, HEIGHT = 640, 480
-
-# Retro 70's palette
 MENU_BG = (58, 45, 47)
 STRIPE_COLORS = [(249, 200, 14), (255, 127, 17), (214, 48, 49)]
 TITLE_COLOR = (249, 200, 14)
@@ -30,10 +28,12 @@ def main():
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
     pygame.display.set_caption("Game Hub")
     clock = pygame.time.Clock()
+
     title_font = pygame.font.SysFont(None, 72)
     font = pygame.font.SysFont(None, 48)
 
     games = [("Snake", run_snake), ("Flappy Bird", run_flappy)]
+
     selected = 0
 
     joysticks = init_joysticks()
@@ -64,6 +64,7 @@ def main():
 
         screen.fill(MENU_BG)
 
+
         # Decorative retro stripes
         for i, color in enumerate(STRIPE_COLORS):
             pygame.draw.rect(screen, color, (0, i * 20, WIDTH, 20))
@@ -72,6 +73,7 @@ def main():
         title = title_font.render("Game Hub", True, TITLE_COLOR)
         title_rect = title.get_rect(center=(WIDTH // 2, HEIGHT // 3 - 60))
         screen.blit(title, title_rect)
+
 
         for idx, (name, _) in enumerate(games):
             color = HIGHLIGHT_COLOR if idx == selected else TEXT_COLOR
