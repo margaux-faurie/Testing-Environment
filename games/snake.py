@@ -125,8 +125,15 @@ def run():
 
 def game_over(screen, clock):
     """Display a game over screen waiting for user input."""
-    font = pygame.font.SysFont(None, 48)
+
+    font_size = 48
+    font = pygame.font.SysFont(None, font_size)
     msg = font.render("Game Over - Press Enter or Button", True, (255, 255, 255))
+    while msg.get_width() > SCREEN_WIDTH - 20 and font_size > 10:
+        font_size -= 2
+        font = pygame.font.SysFont(None, font_size)
+        msg = font.render("Game Over - Press Enter or Button", True, (255, 255, 255))
+
     rect = msg.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
 
     waiting = True
